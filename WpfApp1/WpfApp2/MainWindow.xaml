@@ -1,0 +1,36 @@
+﻿<Window x:Class="WpfApp2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <GroupBox Header="Внешний GroupBox">
+            <StackPanel Orientation="Vertical">
+                
+                <GroupBox Header="Внутренний GroupBox1">
+                    <StackPanel>
+                    <TextBlock Text="Ширина текста:"></TextBlock>
+                        <TextBox Background="Yellow" Text ="{Binding Path=ActualWidth,Mode=OneWay, RelativeSource={RelativeSource Mode=Self}}"></TextBox>
+                        <TextBlock Text="Ширина окна:"></TextBlock>
+                        <TextBox Background="Yellow" Text ="{Binding Path=ActualWidth,Mode=OneWay,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"></TextBox>
+                    </StackPanel>
+                </GroupBox>
+
+
+                <GroupBox Header="Внутренний GroupBox2">
+                    <StackPanel>
+                        <TextBlock Text="Заголовок внутреннего GroupBox"></TextBlock>
+                        <TextBox Background="Yellow" Text ="{Binding Path=Header, Mode=OneWay, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type GroupBox}}}"></TextBox>
+                        <TextBlock Text="Заголовок внешнего GroupBox"></TextBlock>
+                        <TextBox Background="Yellow" Text ="{Binding Path=Header, Mode=OneWay, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type GroupBox},AncestorLevel=2}}"></TextBox>
+                    </StackPanel>
+                </GroupBox>
+                
+            </StackPanel>
+       
+        </GroupBox>
+    </Grid>
+</Window>
